@@ -36,6 +36,15 @@ WORLD_PRESET_LABELS: dict[str, str] = {
     "pytorch3d": "PyTorch3D (RH, X-left, Y-up)",
     "custom": "Custom",
 }
+WORLD_PRESET_KEYS: tuple[str, ...] = (
+    "blender",
+    "maya",
+    "unity",
+    "unreal",
+    "robotics",
+    "pytorch3d",
+    "custom",
+)
 
 CAMERA_PRESETS: dict[str, AxisConvention] = {
     "opencv": AxisConvention("opencv", x="+x", y="+y", z="+z"),
@@ -58,6 +67,15 @@ CAMERA_PRESET_LABELS: dict[str, str] = {
     "unreal_camera": "Unreal Camera (Rgt=+Y, Up=+Z, Fwd=+X)",
     "custom": "Custom",
 }
+CAMERA_PRESET_KEYS: tuple[str, ...] = (
+    "opencv",
+    "opengl",
+    "pytorch3d",
+    "robotics_optical",
+    "unity_camera",
+    "unreal_camera",
+    "custom",
+)
 
 
 def axis_vector(axis: AxisDirection) -> tuple[int, int, int]:

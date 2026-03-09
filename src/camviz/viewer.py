@@ -4,8 +4,10 @@ import math
 import time
 
 from .conventions import (
+    CAMERA_PRESET_KEYS,
     CAMERA_PRESET_LABELS,
     CAMERA_PRESETS,
+    WORLD_PRESET_KEYS,
     WORLD_PRESET_LABELS,
     WORLD_PRESETS,
     convention_matrix,
@@ -17,24 +19,6 @@ from .parsing import parse_custom_axis_convention
 
 
 AXIS_OPTIONS: tuple[AxisDirection, ...] = ("+x", "-x", "+y", "-y", "+z", "-z")
-WORLD_PRESET_KEYS: tuple[str, ...] = (
-    "blender",
-    "maya",
-    "unity",
-    "unreal",
-    "robotics",
-    "pytorch3d",
-    "custom",
-)
-CAMERA_PRESET_KEYS: tuple[str, ...] = (
-    "opencv",
-    "opengl",
-    "pytorch3d",
-    "robotics_optical",
-    "unity_camera",
-    "unreal_camera",
-    "custom",
-)
 
 
 def launch_viewer(config: InspectConfig) -> None:

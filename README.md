@@ -3,6 +3,8 @@
 Inspect a single camera pose matrix against multiple world and camera coordinate
 system conventions, then view the result in a browser-based 3D scene.
 
+![camviz main UI](screenshot-mainUI.png)
+
 ## Install
 
 Create or update the environment with `uv`:
@@ -20,7 +22,7 @@ uv run camviz inspect \
   --matrix "[[1, 0, 0, 1], [0, 1, 0, 2], [0, 0, 1, 3], [0, 0, 0, 1]]" \
   --pose-type cam2world \
   --camera-convention opencv \
-  --world-convention rh_z_up
+  --world-convention blender
 ```
 
 Matrix file:
@@ -30,22 +32,27 @@ uv run camviz inspect \
   --matrix pose.json \
   --pose-type world2cam \
   --camera-convention opengl \
-  --world-convention rh_y_up
+  --world-convention maya
 ```
 
 ## Supported presets
 
 World:
-- `rh_z_up`
-- `rh_y_up`
-- `lh_z_up`
-- `lh_y_up`
+- `blender`
+- `maya`
+- `unity`
+- `unreal`
+- `robotics`
+- `pytorch3d`
 - `custom`
 
 Camera:
 - `opencv`
 - `opengl`
 - `pytorch3d`
+- `robotics_optical`
+- `unity_camera`
+- `unreal_camera`
 - `custom`
 
 For `custom`, provide axis mappings:
@@ -74,7 +81,7 @@ uv run camviz inspect \
   --matrix pose.json \
   --pose-type world2cam \
   --camera-convention opengl \
-  --world-convention rh_y_up \
+  --world-convention maya \
   --text-only
 ```
 

@@ -7,7 +7,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from camviz.cli import main
+from camviz.cli import build_parser, main
+from camviz.conventions import CAMERA_PRESET_KEYS, WORLD_PRESET_KEYS
 from camviz.parsing import parse_axis_convention, parse_intrinsics, parse_matrix_input
 
 
@@ -57,6 +58,15 @@ class ParsingTests(unittest.TestCase):
         output = buffer.getvalue()
         self.assertIn("Pose Diagnostics", output)
         self.assertIn("### Pose Matrix In World", output)
+
+    def test_cli_preset_choices_match_shared_preset_keys(self) -> None:
+        parser = build_parser()
+        inspect_parser = parser._subparsers._group_actions[0].choices["inspect"]
+        camera_action = next(action for action in inspect_parser._actions if action.dest == "camera_convention")
+        world_action = next(action for action in inspect_parser._actions if action.dest == "world_convention")
+
+        self.assertEqual(tuple(camera_action.choices), CAMERA_PRESET_KEYS)
+        self.assertEqual(tuple(world_action.choices), WORLD_PRESET_KEYS)
 
 
 if __name__ == "__main__":

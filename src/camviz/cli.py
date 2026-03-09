@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 
+from .conventions import CAMERA_PRESET_KEYS, WORLD_PRESET_KEYS
 from .inspection import diagnostics_markdown, interpret_pose
 from .models import InspectConfig
 from .parsing import parse_axis_convention, parse_intrinsics, parse_matrix_input
@@ -23,12 +24,12 @@ def build_parser() -> argparse.ArgumentParser:
     inspect_parser.add_argument("--pose-type", choices=("cam2world", "world2cam"), default="cam2world")
     inspect_parser.add_argument(
         "--camera-convention",
-        choices=("opencv", "opengl", "pytorch3d", "custom"),
+        choices=CAMERA_PRESET_KEYS,
         default="opencv",
     )
     inspect_parser.add_argument(
         "--world-convention",
-        choices=("blender", "maya", "unity", "unreal", "robotics", "pytorch3d", "custom"),
+        choices=WORLD_PRESET_KEYS,
         default="blender",
     )
     inspect_parser.add_argument("--camera-axes", help="Custom camera axes, e.g. x=+x,y=-y,z=+z.")
